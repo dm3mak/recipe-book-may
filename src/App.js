@@ -6,6 +6,7 @@ import RecipesPage from './pages/RecipesPage'
 import Signup from './pages/Signup'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipesNavbar from './components/RecipesNavbar'
+import { Container } from 'react-bootstrap'
 //App is the main component for our Recipe app
 // State:
 // activeUser: Either null , if
@@ -37,11 +38,12 @@ class App extends React.Component {
             logout = {this.logout}
             ></RecipesNavbar>
           </Route>
+          <Container>
           <Route  exact path ="/">
             <HomePage></HomePage>
           </Route>
           <Route exact path ="/recipes">
-            <RecipesPage></RecipesPage>
+            <RecipesPage activeUser = {this.state.activeUser}></RecipesPage>
           </Route>
           <Route exact path ="/login">
             <Login></Login>
@@ -49,7 +51,9 @@ class App extends React.Component {
           <Route exact path ="/signup">
             <Signup></Signup>
           </Route>
+          </Container>
         </HashRouter>
+        
       </div>
     )
   }
